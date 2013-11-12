@@ -2,8 +2,7 @@ package com.snapped.wander;
 
 import android.app.*;
 import android.os.*;
-import android.view.*;
-import android.widget.*;
+import android.content.Intent;
 
 public class MainActivity extends Activity
 {
@@ -12,6 +11,8 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main);
+		Intent f= new Intent(this, GL.class);
+		startActivity(f);
     }
 }
