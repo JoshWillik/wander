@@ -11,8 +11,7 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-		Intent f= new Intent(this, GL.class);
-		startActivity(f);
+		GL gl = new GL(this);
+		setContentView(gl);
     }
 }
