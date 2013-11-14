@@ -9,12 +9,6 @@ import java.nio.*;
 public class GLRenderer implements GLSurfaceView.Renderer
 {	
 	private GL gl;
-	private final String vertexShaderCode = 
-	"uniform mat4 uMVPMatrix; \n" 
-	+ "attribute vec4 vPosition; \n"
-	+"void main(){"
-	+	"gl_position = uMVPMatrix * vPosition; \n:"
-	+"}";
 	
 	public GLRenderer(Context context, GL gl){
 		this.gl = gl;
@@ -43,6 +37,12 @@ public class GLRenderer implements GLSurfaceView.Renderer
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 		//game drawing logic here
 	}
+	
+	public int loadShader(int type, String shaderCode){
+		int shader;
+		/*temp*/shader=0;
+		return shader;
+	}
 }
 
 class Triangle{
@@ -58,11 +58,35 @@ class Triangle{
 		0.3f, 0.5f, 0.6f, 0.7f
 	};
 	
+	private final String vertexShaderCode = 
+	"uniform mat4 uMVPMatrix; \n" 
+	+ "attribute vec4 vPosition; \n"
+	+"void main(){"
+	+	"gl_position = uMVPMatrix * vPosition; \n:"
+	+"}";
+	
+	private final String fragmentShaderCode =
+	"precision mediump float;" +
+	"uniform vec4 vColor;" +
+	"void main() {" +
+	"  gl_FragColor = vColor;" +
+	"}";
+	
+	private int
+		mProgram
+		, mPosistionHandle
+		, mColorHandle
+		;
+	
 	public Triangle(){
 		ByteBuffer bb = ByteBuffer.allocateDirect(triangleCoords.length * 4);
 		bb.order(ByteOrder.nativeOrder());
 		vertexBuffer = bb.asFloatBuffer();
 		vertexBuffer.put(triangleCoords);
 		vertexBuffer.position(0);		
+	}
+	
+	void draw(){
+		
 	}
 }
