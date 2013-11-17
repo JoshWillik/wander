@@ -10,8 +10,8 @@ public class GL extends GLSurfaceView
 	private GLRenderer renderer;
 	public GL(Context context){
 		super(context);
-		renderer = new GLRenderer(context, this);
 		setEGLContextClientVersion(2);
+		renderer = new GLRenderer(context, this);
 		setRenderer(renderer);
 		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 	}
